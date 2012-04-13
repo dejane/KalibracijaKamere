@@ -15,8 +15,6 @@ using Emgu.CV.Util;
 namespace CamerasCalibrationSystem
 {
 
-
-
     public partial class Form1 : Form
     {
 
@@ -59,6 +57,14 @@ namespace CamerasCalibrationSystem
         {
             Kalibracija.addCamera(new Camera(listBox1.SelectedIndex));
             listBox2.Items.Add(listBox1.SelectedIndex.ToString());
+
+            Decimal dec4 = numericUpDown4.Value;
+            int chessboardNumbers = Int32.Parse(dec4.ToString());
+
+            if (Kalibracija.getChessBoardNumbers() == 0 && Kalibracija.getChessBoardNumbers() == null)
+            {
+                Kalibracija.setChessBoardNumbers(chessboardNumbers);
+            }
         }
         
         // show camera in new form
@@ -72,18 +78,6 @@ namespace CamerasCalibrationSystem
         {
             
                 if (CamCapture == null)
-                {
-                    try
-                    {
-                        CamCapture = new Emgu.CV.Capture(listBox2.SelectedIndex);
-                    }
-                    catch (NullReferenceException excpt)
-                    {
-                        MessageBox.Show(excpt.Message);
-                    }
-                }
-
-                if (menjaj == true)
                 {
                     try
                     {
@@ -129,21 +123,26 @@ namespace CamerasCalibrationSystem
         // close image in PB
         private void button6_Click(object sender, EventArgs e)
         {
-            imageBox1.Visible = false;
+           imageBox1.Visible = false;
+           
         }
 
-        // find schesboard cornes JUST TEST
+        // calibate selected camera
         private void button7_Click(object sender, EventArgs e)
         {
-            Image<Gray, Byte> slika = new Image<Gray, Byte>("calibration_checkerboard.png");
-            PointF[] corners = new PointF[] { };
-            Size patternSize = new Size(9, 6);
-            corners = CameraCalibration.FindChessboardCorners(slika, patternSize, 
-                Emgu.CV.CvEnum.CALIB_CB_TYPE.ADAPTIVE_THRESH | Emgu.CV.CvEnum.CALIB_CB_TYPE.FILTER_QUADS);
+            Decimal dec2 = numericUpDown2.Value;
+            int patternX = Int32.Parse(dec2.ToString());
+            Decimal dec3 = numericUpDown3.Value;
+            int patternY = Int32.Parse(dec3.ToString());
 
-            CameraCalibration.DrawChessboardCorners(slika, patternSize, corners);
-            imageBox2.Image = slika;
+            imageBox1.Image = Kalibracija.CalibrateSingleCamera(listBox2.SelectedIndex, patternX, patternY); 
             
+        }
+
+        // calibrate whole system
+        private void button8_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
