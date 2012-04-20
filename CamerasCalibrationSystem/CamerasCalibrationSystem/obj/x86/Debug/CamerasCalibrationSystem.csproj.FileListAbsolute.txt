@@ -1,0 +1,17 @@
+C:\Users\Dejan\Desktop\Diplomska\CamerasCalibrationSystem\CamerasCalibrationSystem\bin\Debug\CamerasCalibrationSystem.exe
+C:\Users\Dejan\Desktop\Diplomska\CamerasCalibrationSystem\CamerasCalibrationSystem\bin\Debug\CamerasCalibrationSystem.pdb
+C:\Users\Dejan\Desktop\Diplomska\CamerasCalibrationSystem\CamerasCalibrationSystem\bin\Debug\Emgu.CV.DebuggerVisualizers.VS2010.dll
+C:\Users\Dejan\Desktop\Diplomska\CamerasCalibrationSystem\CamerasCalibrationSystem\bin\Debug\Emgu.CV.dll
+C:\Users\Dejan\Desktop\Diplomska\CamerasCalibrationSystem\CamerasCalibrationSystem\bin\Debug\Emgu.CV.UI.dll
+C:\Users\Dejan\Desktop\Diplomska\CamerasCalibrationSystem\CamerasCalibrationSystem\bin\Debug\Emgu.Util.dll
+C:\Users\Dejan\Desktop\Diplomska\CamerasCalibrationSystem\CamerasCalibrationSystem\bin\Debug\ZedGraph.dll
+C:\Users\Dejan\Desktop\Diplomska\CamerasCalibrationSystem\CamerasCalibrationSystem\bin\Debug\Emgu.CV.xml
+C:\Users\Dejan\Desktop\Diplomska\CamerasCalibrationSystem\CamerasCalibrationSystem\bin\Debug\Emgu.CV.UI.xml
+C:\Users\Dejan\Desktop\Diplomska\CamerasCalibrationSystem\CamerasCalibrationSystem\bin\Debug\Emgu.Util.xml
+C:\Users\Dejan\Desktop\Diplomska\CamerasCalibrationSystem\CamerasCalibrationSystem\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Dejan\Desktop\Diplomska\CamerasCalibrationSystem\CamerasCalibrationSystem\obj\x86\Debug\CamerasCalibrationSystem.Form1.resources
+C:\Users\Dejan\Desktop\Diplomska\CamerasCalibrationSystem\CamerasCalibrationSystem\obj\x86\Debug\CamerasCalibrationSystem.Properties.Resources.resources
+C:\Users\Dejan\Desktop\Diplomska\CamerasCalibrationSystem\CamerasCalibrationSystem\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\Dejan\Desktop\Diplomska\CamerasCalibrationSystem\CamerasCalibrationSystem\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\Dejan\Desktop\Diplomska\CamerasCalibrationSystem\CamerasCalibrationSystem\obj\x86\Debug\CamerasCalibrationSystem.exe
+C:\Users\Dejan\Desktop\Diplomska\CamerasCalibrationSystem\CamerasCalibrationSystem\obj\x86\Debug\CamerasCalibrationSystem.pdb
