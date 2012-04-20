@@ -39,7 +39,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -55,10 +54,21 @@
             this.button7 = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.datotekaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.odpriKalibracijskiSistemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.shraniKalibracijskiSistemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.urediToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.infoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pomočToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pProgramuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.imageBox3 = new Emgu.CV.UI.ImageBox();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.imageBox4 = new Emgu.CV.UI.ImageBox();
+            this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -70,14 +80,20 @@
             this.menuStrip1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imageBox3)).BeginInit();
+            this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imageBox4)).BeginInit();
             this.SuspendLayout();
             // 
             // imageBox1
             // 
             this.imageBox1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.imageBox1.Location = new System.Drawing.Point(391, 44);
+            this.imageBox1.Location = new System.Drawing.Point(-1, 0);
             this.imageBox1.Name = "imageBox1";
-            this.imageBox1.Size = new System.Drawing.Size(381, 373);
+            this.imageBox1.Size = new System.Drawing.Size(374, 358);
             this.imageBox1.TabIndex = 2;
             this.imageBox1.TabStop = false;
             // 
@@ -108,7 +124,7 @@
             this.numericUpDown1.Size = new System.Drawing.Size(198, 20);
             this.numericUpDown1.TabIndex = 5;
             this.numericUpDown1.Value = new decimal(new int[] {
-            2,
+            1,
             0,
             0,
             0});
@@ -147,7 +163,7 @@
             // button4
             // 
             this.button4.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button4.Location = new System.Drawing.Point(163, 101);
+            this.button4.Location = new System.Drawing.Point(163, 77);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(204, 23);
             this.button4.TabIndex = 9;
@@ -188,21 +204,10 @@
             this.label2.TabIndex = 12;
             this.label2.Text = "All avaible cameras:";
             // 
-            // button6
-            // 
-            this.button6.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button6.Location = new System.Drawing.Point(163, 43);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(204, 23);
-            this.button6.TabIndex = 12;
-            this.button6.Text = "Close image";
-            this.button6.UseVisualStyleBackColor = false;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
             // button5
             // 
             this.button5.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button5.Location = new System.Drawing.Point(163, 72);
+            this.button5.Location = new System.Drawing.Point(163, 48);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(204, 23);
             this.button5.TabIndex = 11;
@@ -354,25 +359,57 @@
             // 
             // datotekaToolStripMenuItem
             // 
+            this.datotekaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.odpriKalibracijskiSistemToolStripMenuItem,
+            this.shraniKalibracijskiSistemToolStripMenuItem,
+            this.closeToolStripMenuItem});
             this.datotekaToolStripMenuItem.Name = "datotekaToolStripMenuItem";
-            this.datotekaToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
-            this.datotekaToolStripMenuItem.Text = "Datoteka";
+            this.datotekaToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.datotekaToolStripMenuItem.Text = "File";
+            // 
+            // odpriKalibracijskiSistemToolStripMenuItem
+            // 
+            this.odpriKalibracijskiSistemToolStripMenuItem.Name = "odpriKalibracijskiSistemToolStripMenuItem";
+            this.odpriKalibracijskiSistemToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.odpriKalibracijskiSistemToolStripMenuItem.Text = "Save calibration system";
+            this.odpriKalibracijskiSistemToolStripMenuItem.Click += new System.EventHandler(this.odpriKalibracijskiSistemToolStripMenuItem_Click);
+            // 
+            // shraniKalibracijskiSistemToolStripMenuItem
+            // 
+            this.shraniKalibracijskiSistemToolStripMenuItem.Name = "shraniKalibracijskiSistemToolStripMenuItem";
+            this.shraniKalibracijskiSistemToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.shraniKalibracijskiSistemToolStripMenuItem.Text = "Open Calibration System";
+            this.shraniKalibracijskiSistemToolStripMenuItem.Click += new System.EventHandler(this.shraniKalibracijskiSistemToolStripMenuItem_Click);
             // 
             // urediToolStripMenuItem
             // 
             this.urediToolStripMenuItem.Name = "urediToolStripMenuItem";
-            this.urediToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
-            this.urediToolStripMenuItem.Text = "Uredi";
+            this.urediToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
+            this.urediToolStripMenuItem.Text = "Edit";
             // 
             // infoToolStripMenuItem
             // 
+            this.infoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.pomočToolStripMenuItem,
+            this.pProgramuToolStripMenuItem});
             this.infoToolStripMenuItem.Name = "infoToolStripMenuItem";
             this.infoToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
             this.infoToolStripMenuItem.Text = "Info";
             // 
+            // pomočToolStripMenuItem
+            // 
+            this.pomočToolStripMenuItem.Name = "pomočToolStripMenuItem";
+            this.pomočToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.pomočToolStripMenuItem.Text = "Help";
+            // 
+            // pProgramuToolStripMenuItem
+            // 
+            this.pProgramuToolStripMenuItem.Name = "pProgramuToolStripMenuItem";
+            this.pProgramuToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.pProgramuToolStripMenuItem.Text = "About";
+            // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.button6);
             this.groupBox4.Controls.Add(this.listBox2);
             this.groupBox4.Controls.Add(this.button5);
             this.groupBox4.Controls.Add(this.button4);
@@ -394,22 +431,90 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Output:";
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Location = new System.Drawing.Point(391, 37);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(381, 380);
+            this.tabControl1.TabIndex = 18;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.imageBox1);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(373, 354);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Live stream";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.imageBox3);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(373, 354);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "ChessBoardCorners";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // imageBox3
+            // 
+            this.imageBox3.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.imageBox3.Location = new System.Drawing.Point(-1, -2);
+            this.imageBox3.Name = "imageBox3";
+            this.imageBox3.Size = new System.Drawing.Size(374, 358);
+            this.imageBox3.TabIndex = 3;
+            this.imageBox3.TabStop = false;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.imageBox4);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(373, 354);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Transformed image";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // imageBox4
+            // 
+            this.imageBox4.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.imageBox4.Location = new System.Drawing.Point(-1, -2);
+            this.imageBox4.Name = "imageBox4";
+            this.imageBox4.Size = new System.Drawing.Size(374, 358);
+            this.imageBox4.TabIndex = 3;
+            this.imageBox4.TabStop = false;
+            // 
+            // closeToolStripMenuItem
+            // 
+            this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.closeToolStripMenuItem.Text = "Close";
+            this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 562);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.imageBox1);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.groupBox5);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CamerasCalibrationSystem";
             ((System.ComponentModel.ISupportInitialize)(this.imageBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
@@ -426,6 +531,12 @@
             this.menuStrip1.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.imageBox3)).EndInit();
+            this.tabPage4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.imageBox4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -448,7 +559,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button button6;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem datotekaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem urediToolStripMenuItem;
@@ -464,6 +574,17 @@
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.NumericUpDown numericUpDown4;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage3;
+        private Emgu.CV.UI.ImageBox imageBox3;
+        private System.Windows.Forms.ToolStripMenuItem odpriKalibracijskiSistemToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem shraniKalibracijskiSistemToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pomočToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pProgramuToolStripMenuItem;
+        private System.Windows.Forms.TabPage tabPage4;
+        private Emgu.CV.UI.ImageBox imageBox4;
+        private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
     }
 }
 

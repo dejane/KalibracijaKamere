@@ -27,15 +27,18 @@ namespace CamerasCalibrationSystem
         // metoda
         public void addCamera(Camera newCamera)
         {
-        seznam.Add(newCamera);      
+            seznam.Add(newCamera);
         }
 
         public string returnCameras()
         {
             string a = "";
+
+            a += "V sistemu so naslednje kamere: ";
+
             for (int i = 0; i < seznam.Count; i++)
             {
-                a += seznam[i].number.ToString() + " ";
+                a += ((seznam[i].number)+1).ToString() + " ";
             }
             return a;
         }
@@ -52,22 +55,22 @@ namespace CamerasCalibrationSystem
         }
 
         public void setChessBoardNumbers(int i)
-          {
-          chessboard_number = i;
-          }
+        {
+            chessboard_number = i;
+        }
 
         public int getChessBoardNumbers()
-          {
-              return chessboard_number;
-          }
+        {
+            return chessboard_number;
+        }
 
         public void processFunction(object sender, EventArgs e)
         {
             frame1 = CamCapture.QueryFrame();
         }
 
-        public void getFrame(int index) {
-
+        public void setCamCapture(int index)
+        {
 
             if (CamCapture == null)
             {
@@ -92,14 +95,21 @@ namespace CamerasCalibrationSystem
 
         }
 
-        public Image<Bgr, byte> CalibrateSingleCamera(int index, int patternX, int patternY)
+        public void CalibrateSingleCamera(int index, int patternX, int patternY,
+                                            ref Image<Bgr, byte> slikaVhodna,
+                                            ref Image<Gray, Byte> slikaRobovi,
+                                            ref Image<Bgr, byte> slikaTransformirana)
         {
+
+            setCamCapture(index);
+
+            int chessboard_number = 3;
 
             int corners_number = patternY * patternX;
             int success = 0;
 
             int count = 0;
-            int board_dt = 20; //waiting 20 frame between any chessboard view acquisition
+            int board_dt = 20;
 
 
             MCvPoint3D32f[][] object_points = new MCvPoint3D32f[chessboard_number][];
@@ -108,55 +118,65 @@ namespace CamerasCalibrationSystem
             IntrinsicCameraParameters intrinsic_param;
             ExtrinsicCameraParameters[] extrinsic_param;
 
-           // Image<Bgr, byte> slikaBarvna = new Emgu.CV.Capture(index);
-           // Image<Gray, Byte> slika = slikaBarvna.Convert<Gray,Byte>();
 
-             Image<Gray, Byte> slika = new Image<Gray, Byte>("test3.jpg");
-        //    Image<Gray, Byte> slika = imagebox1.Image;
+            Image<Bgr, byte> slika2 = slikaVhodna;
+           // Image<Bgr, byte> slika2 = CamCapture.QueryFrame();
+            Image<Gray, Byte> slika = slika2.Convert<Gray, Byte>();
+            slikaVhodna = slika2;
+            //imageBox1.Image = slika2;
+            //   Image<Gray, byte> slika = new Image<Gray, byte>("test.jpg");
+            //  Image<Bgr, byte> slika2 = new Image<Bgr, byte>("test.jpg");
+            // imageBox1.Image = slika;
 
 
             PointF[] corners = new PointF[] { };
-
             Size patternSize = new Size(patternX, patternY);
 
 
             while (success < chessboard_number)
             {
 
-                if ((count++ % board_dt) == 0)  //aspetto 20 frame tra l'acquisizione di una scacchiera e la successiva
+                if ((count++ % board_dt) == 0)
                 {
 
-                    do
+                    if (corners == null || corners.Length == 0)
                     {
-                        corners = CameraCalibration.FindChessboardCorners(slika, patternSize,
-                              Emgu.CV.CvEnum.CALIB_CB_TYPE.ADAPTIVE_THRESH | Emgu.CV.CvEnum.CALIB_CB_TYPE.FILTER_QUADS); // imeli bomo več tipov iskanja
+                        corners = CameraCalibration.FindChessboardCorners(slika, patternSize, CALIB_CB_TYPE.DEFAULT);
+                        continue;
+                    }
 
-                    } while (corners != null);
-
-                    CameraCalibration.DrawChessboardCorners(slika, patternSize, corners);
-
-                    slika.FindCornerSubPix(new PointF[][] { corners }, new Size(10, 10), new Size(-1, -1), new MCvTermCriteria(300, 0.01));
-
-                    if (corners.Length == corners_number)
+                    else
                     {
-                        object_points[success] = new MCvPoint3D32f[corners_number];
-                        for (int j = 0; j < corners_number; j++)
+
+                        CameraCalibration.DrawChessboardCorners(slika, patternSize, corners);
+                        slikaRobovi = slika;
+
+                        slika.FindCornerSubPix(new PointF[][] { corners }, new Size(10, 10), new Size(-1, -1), new MCvTermCriteria(300, 0.01));
+
+                        if (corners.Length == corners_number)
                         {
-                            image_points[success] = corners;
-                            object_points[success][j].x = j / patternX;
-                            object_points[success][j].y = j % patternY;
-                            object_points[success][j].z = 0.0f;
-                        }
+                            object_points[success] = new MCvPoint3D32f[corners_number];
+                            for (int j = 0; j < corners_number; j++)
+                            {
+                                image_points[success] = corners;
+                                object_points[success][j].x = j / patternX;
+                                object_points[success][j].y = j % patternY;
+                                object_points[success][j].z = 0.0f;
+                            }
 
-                        success++;
+                            success++;
+                        }
                     }
                 }
 
-                slika = new Image<Gray, Byte>("test2.jpg");
+                slika2 = CamCapture.QueryFrame();
+                slika = slika2.Convert<Gray, Byte>();
+                //imageBox1.Image = slika2;
+
+
+                // slika = new Image<Gray, Byte>("test.jpg");
 
             }
-
-          
 
             intrinsic_param = new IntrinsicCameraParameters();
             extrinsic_param = new ExtrinsicCameraParameters[success];
@@ -171,12 +191,15 @@ namespace CamerasCalibrationSystem
             Matrix<float> mapx = new Matrix<float>(new Size(slika.Width, slika.Height));
             Matrix<float> mapy = new Matrix<float>(new Size(slika.Width, slika.Height));
 
-            intrinsic_param.InitUndistortMap(slika.Width, slika.Height, out mapx, out mapy);  
+            intrinsic_param.InitUndistortMap(slika.Width, slika.Height, out mapx, out mapy);
 
-            Image<Bgr, byte> image_calibrated = (slika.Convert<Bgr, byte>()).Clone();
-            CvInvoke.cvRemap(image_calibrated.Ptr, slika.Ptr, mapx.Ptr, mapy.Ptr, 8 /*(int)INTER.CV_INTER_LINEAR | (int)WARP.CV_WARP_FILL_OUTLIERS*/, new MCvScalar(0));
-                   
-            return image_calibrated;
+            Image<Bgr, byte> image_calibrated = slika2.Clone();
+
+            CvInvoke.cvRemap(slika2.Ptr, image_calibrated.Ptr, mapx.Ptr, mapy.Ptr, 8 /*(int)INTER.CV_INTER_LINEAR | (int)WARP.CV_WARP_FILL_OUTLIERS*/, new MCvScalar(0));
+
+            slikaTransformirana = image_calibrated;
+
+            
         }
     }
 }
