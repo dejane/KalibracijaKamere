@@ -15,3 +15,5 @@ C:\Users\Dejan\Desktop\Diplomska\CamerasCalibrationSystem\CamerasCalibrationSyst
 C:\Users\Dejan\Desktop\Diplomska\CamerasCalibrationSystem\CamerasCalibrationSystem\obj\x86\Debug\GenerateResource.write.1.tlog
 C:\Users\Dejan\Desktop\Diplomska\CamerasCalibrationSystem\CamerasCalibrationSystem\obj\x86\Debug\CamerasCalibrationSystem.exe
 C:\Users\Dejan\Desktop\Diplomska\CamerasCalibrationSystem\CamerasCalibrationSystem\obj\x86\Debug\CamerasCalibrationSystem.pdb
+C:\Users\Dejan\Desktop\CamerasCalibrationSystem\CamerasCalibrationSystem\obj\x86\Debug\CamerasCalibrationSystem.exe
+C:\Users\Dejan\Desktop\CamerasCalibrationSystem\CamerasCalibrationSystem\obj\x86\Debug\CamerasCalibrationSystem.pdb

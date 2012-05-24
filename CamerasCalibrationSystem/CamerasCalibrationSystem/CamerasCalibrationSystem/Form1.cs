@@ -212,6 +212,21 @@ namespace CamerasCalibrationSystem
             Close();
         }
 
+        private void table1BindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.table1BindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.database41DataSet);
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'database41DataSet.Table1' table. You can move, or remove it, as needed.
+            this.table1TableAdapter.Fill(this.database41DataSet.Table1);
+
+        }
+
     }
 
     }
