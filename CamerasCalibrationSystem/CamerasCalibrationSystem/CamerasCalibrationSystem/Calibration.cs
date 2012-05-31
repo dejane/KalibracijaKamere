@@ -10,6 +10,7 @@ using System.Drawing;
 using Emgu.CV.CvEnum;
 using System.Windows.Forms;
 
+
 namespace CamerasCalibrationSystem
 {
     class Calibration
@@ -95,11 +96,12 @@ namespace CamerasCalibrationSystem
 
         }
 
+
         public void CalibrateSingleCamera(int index, int patternX, int patternY,
                                             ref Image<Bgr, byte> slikaVhodna,
                                             ref Image<Gray, Byte> slikaRobovi,
                                             ref Image<Bgr, byte> slikaTransformirana)
-        {
+           {
 
             setCamCapture(index);
 
@@ -120,6 +122,7 @@ namespace CamerasCalibrationSystem
 
 
             Image<Bgr, byte> slika2 = slikaVhodna;
+
            // Image<Bgr, byte> slika2 = CamCapture.QueryFrame();
             Image<Gray, Byte> slika = slika2.Convert<Gray, Byte>();
             slikaVhodna = slika2;

@@ -53,6 +53,7 @@ namespace CamerasCalibrationSystem
         private void processFunction(object sender, EventArgs e)
         {
             frame1 = CamCapture.QueryFrame();
+           // frame1 = frame1.Resize(imageBox1.Width, imageBox1.Height, Emgu.CV.CvEnum.INTER.CV_INTER_LINEAR);
             imageBox1.Image = frame1;
         }
 
@@ -161,6 +162,18 @@ namespace CamerasCalibrationSystem
 
         }
 
+        public void addToDatabase(string path, string path_org, int rate)
+        {
+            DateTime dt = DateTime.Now;
+            this.calibrationDatabaseDataSet.CallibrationTabel.AddCallibrationTabelRow(dt, path, path_org, rate);
+            // datetime, path, comment, rate
+
+            this.Validate();
+            this.callibrationTabelBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.calibrationDatabaseDataSet);
+        }
+
+
         // calibate selected camera
         private void button7_Click(object sender, EventArgs e)
         {
@@ -180,6 +193,41 @@ namespace CamerasCalibrationSystem
 
                 imageBox3.Image = slikaRobovi;
                 imageBox4.Image = slikaTransformirana;
+
+                // shranimo kalibrirano sliko
+                // path -> C:\Users\Dejan\Desktop\Diplomska\CamerasCalibrationSystem\CamerasCalibrationSystem
+                // shranmo orginalno
+                // odstejemo, zraucunamo rate
+                //dodamo v bazo
+
+                int id = this.calibrationDatabaseDataSet.CallibrationTabel.Rows.Count;
+                string id1 = id.ToString();
+                string vhodna = @"C:\Users\Dejan\Desktop\Diplomska\CamerasCalibrationSystem\CamerasCalibrationSystem\img\org\v" + id1 + ".jpg";
+                string transformirana = @"C:\Users\Dejan\Desktop\Diplomska\CamerasCalibrationSystem\CamerasCalibrationSystem\img\calibrated\c" + id1 + ".jpg";
+
+                frame1.Save(vhodna);
+                slikaTransformirana.Save(transformirana);
+
+                Image<Gray, Byte> s1 = frame1.Convert<Gray, Byte>();
+                Image<Gray, Byte> s2 = slikaTransformirana.Convert<Gray, Byte>();
+                Image<Gray, Byte> s3 = s1 - s2;
+
+              /*  double rate = 0;
+                int count = 0;
+                for (int i = 0; i < s3.Width; i++)
+                    {
+                        for (int j = 0; i < s3.Height; j++)
+                        {
+                            rate += s3[j, i].Intensity;
+                            count++;
+                        }
+                    }
+                rate = rate / count;
+                int rate1 = (int)rate; */
+                int rate1 = 100;
+
+                addToDatabase(vhodna, transformirana, rate1);
+                
             }
             else
             {
@@ -212,20 +260,30 @@ namespace CamerasCalibrationSystem
             Close();
         }
 
-        private void table1BindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        // open new form, database
+                private void button6_Click_1(object sender, EventArgs e)
         {
-            this.Validate();
-            this.table1BindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.database41DataSet);
-
+            Form2 form2 = new Form2();
+            form2.Show();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            // TODO: This line of code loads data into the 'database41DataSet.Table1' table. You can move, or remove it, as needed.
-            this.table1TableAdapter.Fill(this.database41DataSet.Table1);
+                private void callibrationTabelBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+                {
+                    this.Validate();
+                    this.callibrationTabelBindingSource.EndEdit();
+                    this.tableAdapterManager.UpdateAll(this.calibrationDatabaseDataSet);
 
-        }
+                }
+
+                private void Form1_Load(object sender, EventArgs e)
+                {
+                    // TODO: This line of code loads data into the 'calibrationDatabaseDataSet.CallibrationTabel' table. You can move, or remove it, as needed.
+                    this.callibrationTabelTableAdapter.Fill(this.calibrationDatabaseDataSet.CallibrationTabel);
+
+                }
+
+
+           
 
     }
 

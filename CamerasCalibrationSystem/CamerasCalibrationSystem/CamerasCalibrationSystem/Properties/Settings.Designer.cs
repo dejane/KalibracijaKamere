@@ -26,10 +26,11 @@ namespace CamerasCalibrationSystem.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\\Database41.accdb")]
-        public string Database41ConnectionString {
+        [global::System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\\CalibrationDatabase" +
+            ".accdb")]
+        public string CalibrationDatabaseConnectionString {
             get {
-                return ((string)(this["Database41ConnectionString"]));
+                return ((string)(this["CalibrationDatabaseConnectionString"]));
             }
         }
     }
