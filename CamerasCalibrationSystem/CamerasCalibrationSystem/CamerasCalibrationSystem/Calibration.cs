@@ -17,7 +17,7 @@ namespace CamerasCalibrationSystem
     {
 
         // spremenljivke
-        List<Camera> seznam = new List<Camera>();
+        public List<Camera> seznam = new List<Camera>();
 
         int chessboard_number;
 

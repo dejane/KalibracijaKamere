@@ -92,6 +92,15 @@ namespace CamerasCalibrationSystem
         // show camera in new form
         private void button3_Click(object sender, EventArgs e)
         {
+        
+            if (Kalibracija.seznam.Count == 0)
+            {
+                MessageBox.Show("Numbers of camera's in calibration System is 0!");
+                return;
+
+            }
+            
+
             showKamera();
         }
 
@@ -177,6 +186,14 @@ namespace CamerasCalibrationSystem
         // calibate selected camera
         private void button7_Click(object sender, EventArgs e)
         {
+
+            if (Kalibracija.seznam.Count == 0)
+            {
+                MessageBox.Show("Numbers of camera's in calibration System is 0!");
+                return;
+                
+            }
+            
             if (CamCapture != null)
             {
                 Decimal dec2 = numericUpDown2.Value;
@@ -212,20 +229,13 @@ namespace CamerasCalibrationSystem
                 Image<Gray, Byte> s2 = slikaTransformirana.Convert<Gray, Byte>();
                 Image<Gray, Byte> s3 = s1 - s2;
 
-              /*  double rate = 0;
-                int count = 0;
-                for (int i = 0; i < s3.Width; i++)
-                    {
-                        for (int j = 0; i < s3.Height; j++)
-                        {
-                            rate += s3[j, i].Intensity;
-                            count++;
-                        }
-                    }
-                rate = rate / count;
-                int rate1 = (int)rate; */
-                int rate1 = 100;
+                double rate = 0;
 
+                rate = s3.GetAverage().Intensity;
+
+                int rate1 = (int)rate;
+
+            
                 addToDatabase(vhodna, transformirana, rate1);
                 
             }
@@ -280,6 +290,13 @@ namespace CamerasCalibrationSystem
                     // TODO: This line of code loads data into the 'calibrationDatabaseDataSet.CallibrationTabel' table. You can move, or remove it, as needed.
                     this.callibrationTabelTableAdapter.Fill(this.calibrationDatabaseDataSet.CallibrationTabel);
 
+                }
+
+                // open abaout form
+                private void pProgramuToolStripMenuItem_Click(object sender, EventArgs e)
+                {
+                    Form3 form3 = new Form3();
+                    form3.Show();
                 }
 
 
