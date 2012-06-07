@@ -45,7 +45,7 @@ namespace CamerasCalibrationSystem
         {
             try
             {
-                string s = callibrationTabelDataGridView.SelectedRows[0].Cells[2].Value.ToString();
+                string s = callibrationTabelDataGridView.SelectedRows[0].Cells[1].Value.ToString();
                 Image<Bgr, Byte> img1 = new Image<Bgr, Byte>(s);
                 img1 = img1.Resize(imageBox1.Width, imageBox1.Height, Emgu.CV.CvEnum.INTER.CV_INTER_LINEAR);
                 imageBox1.Image = img1;
@@ -64,7 +64,7 @@ namespace CamerasCalibrationSystem
         {
             try
             {
-                string s = callibrationTabelDataGridView.SelectedRows[0].Cells[3].Value.ToString();
+                string s = callibrationTabelDataGridView.SelectedRows[0].Cells[2].Value.ToString();
                 Image<Bgr, Byte> img1 = new Image<Bgr, Byte>(s);
                 img1 = img1.Resize(imageBox1.Width, imageBox1.Height, Emgu.CV.CvEnum.INTER.CV_INTER_LINEAR);
                 imageBox1.Image = img1;

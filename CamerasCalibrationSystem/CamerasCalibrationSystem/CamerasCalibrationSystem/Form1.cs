@@ -9,7 +9,9 @@ using System.Windows.Forms;
 using Emgu.CV;
 using Emgu.CV.Structure;
 using Emgu.CV.UI;
-using Emgu.CV.Util;
+using System.Xml;
+using System.Xml.Serialization;
+using System.IO;
 
 
 namespace CamerasCalibrationSystem
@@ -19,6 +21,8 @@ namespace CamerasCalibrationSystem
 
     public partial class Form1 : Form
     {
+
+        IntrinsicCameraParameters intrinsic_param;
 
         Emgu.CV.Capture CamCapture;
         private bool captureInProgress = false;
@@ -171,6 +175,7 @@ namespace CamerasCalibrationSystem
 
         }
 
+        // baza
         public void addToDatabase(string path, string path_org, int rate)
         {
             DateTime dt = DateTime.Now;
@@ -178,7 +183,7 @@ namespace CamerasCalibrationSystem
             // datetime, path, comment, rate
 
             this.Validate();
-            this.callibrationTabelBindingSource.EndEdit();
+         //   this.callibrationTabelBindingSourceEndEdit();
             this.tableAdapterManager.UpdateAll(this.calibrationDatabaseDataSet);
         }
 
@@ -203,10 +208,12 @@ namespace CamerasCalibrationSystem
 
                 Image<Bgr, byte> nekaj = CamCapture.QueryFrame();
 
+               
                 Kalibracija.CalibrateSingleCamera(listBox2.SelectedIndex, patternX, patternY,
                                                      ref frame1,
                                                      ref slikaRobovi,
-                                                     ref slikaTransformirana);
+                                                     ref slikaTransformirana,
+                                                     ref intrinsic_param);
 
                 imageBox3.Image = slikaRobovi;
                 imageBox4.Image = slikaTransformirana;
@@ -237,6 +244,14 @@ namespace CamerasCalibrationSystem
 
             
                 addToDatabase(vhodna, transformirana, rate1);
+
+                StringBuilder sb = new StringBuilder();
+                (new XmlSerializer(typeof(IntrinsicCameraParameters))).Serialize(new StringWriter(sb), intrinsic_param);
+
+                richTextBox1.Text = sb.ToString();
+                listBox3.Items.Add("Camera is calibrated");
+
+                //CamCapture.Dispose();
                 
             }
             else
@@ -299,7 +314,22 @@ namespace CamerasCalibrationSystem
                     form3.Show();
                 }
 
+                private void button8_Click_1(object sender, EventArgs e)
+                {
+                    String pathxml = @"C:\Users\Dejan\Desktop\Diplomska\CamerasCalibrationSystem\xml";
+                    toXML(intrinsic_param, pathxml);
+                }
 
+
+                public void toXML(IntrinsicCameraParameters npr, string path)
+                {
+                    XmlTextWriter xw = new XmlTextWriter(path, Encoding.UTF8);
+                    StringBuilder sb = new StringBuilder();
+                    (new XmlSerializer(typeof(IntrinsicCameraParameters))).Serialize(new StringWriter(sb), npr);
+                    XmlDocument xDoc = new XmlDocument();
+                    xDoc.LoadXml(sb.ToString());
+                    xDoc.Save(xw);
+                }
            
 
     }

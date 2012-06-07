@@ -72,6 +72,10 @@
             this.calibrationDatabaseDataSet = new CamerasCalibrationSystem.CalibrationDatabaseDataSet();
             this.callibrationTabelTableAdapter = new CamerasCalibrationSystem.CalibrationDatabaseDataSetTableAdapters.CallibrationTabelTableAdapter();
             this.tableAdapterManager = new CamerasCalibrationSystem.CalibrationDatabaseDataSetTableAdapters.TableAdapterManager();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.button8 = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -91,11 +95,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.imageBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.callibrationTabelBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.calibrationDatabaseDataSet)).BeginInit();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // imageBox1
             // 
-            this.imageBox1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.imageBox1.BackColor = System.Drawing.SystemColors.Control;
             this.imageBox1.Location = new System.Drawing.Point(-1, 0);
             this.imageBox1.Name = "imageBox1";
             this.imageBox1.Size = new System.Drawing.Size(374, 358);
@@ -104,7 +109,7 @@
             // 
             // listBox1
             // 
-            this.listBox1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.listBox1.BackColor = System.Drawing.SystemColors.Window;
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(6, 44);
             this.listBox1.Name = "listBox1";
@@ -113,7 +118,7 @@
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button1.BackColor = System.Drawing.SystemColors.Control;
             this.button1.Location = new System.Drawing.Point(163, 70);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(198, 42);
@@ -136,7 +141,7 @@
             // 
             // button2
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button2.BackColor = System.Drawing.SystemColors.Control;
             this.button2.Location = new System.Drawing.Point(163, 123);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(198, 42);
@@ -147,10 +152,10 @@
             // 
             // button3
             // 
-            this.button3.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button3.BackColor = System.Drawing.SystemColors.Control;
             this.button3.Location = new System.Drawing.Point(163, 19);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(204, 28);
+            this.button3.Size = new System.Drawing.Size(204, 49);
             this.button3.TabIndex = 7;
             this.button3.Text = "Show selected camera";
             this.button3.UseVisualStyleBackColor = false;
@@ -158,7 +163,7 @@
             // 
             // listBox3
             // 
-            this.listBox3.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.listBox3.BackColor = System.Drawing.SystemColors.Info;
             this.listBox3.FormattingEnabled = true;
             this.listBox3.Location = new System.Drawing.Point(6, 19);
             this.listBox3.Name = "listBox3";
@@ -167,10 +172,10 @@
             // 
             // button4
             // 
-            this.button4.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button4.Location = new System.Drawing.Point(163, 87);
+            this.button4.BackColor = System.Drawing.SystemColors.Control;
+            this.button4.Location = new System.Drawing.Point(163, 132);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(204, 28);
+            this.button4.Size = new System.Drawing.Size(204, 47);
             this.button4.TabIndex = 9;
             this.button4.Text = "Write down all cameras ";
             this.button4.UseVisualStyleBackColor = false;
@@ -211,10 +216,10 @@
             // 
             // button5
             // 
-            this.button5.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button5.Location = new System.Drawing.Point(163, 53);
+            this.button5.BackColor = System.Drawing.SystemColors.Control;
+            this.button5.Location = new System.Drawing.Point(163, 74);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(204, 28);
+            this.button5.Size = new System.Drawing.Size(204, 52);
             this.button5.TabIndex = 11;
             this.button5.Text = "Remove selected camera";
             this.button5.UseVisualStyleBackColor = false;
@@ -222,7 +227,7 @@
             // 
             // listBox2
             // 
-            this.listBox2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.listBox2.BackColor = System.Drawing.SystemColors.Window;
             this.listBox2.FormattingEnabled = true;
             this.listBox2.Location = new System.Drawing.Point(6, 19);
             this.listBox2.Name = "listBox2";
@@ -243,9 +248,10 @@
             this.groupBox2.Controls.Add(this.numericUpDown4);
             this.groupBox2.Controls.Add(this.groupBox3);
             this.groupBox2.Controls.Add(this.button7);
+            this.groupBox2.Controls.Add(this.groupBox6);
             this.groupBox2.Location = new System.Drawing.Point(391, 423);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(381, 134);
+            this.groupBox2.Size = new System.Drawing.Size(719, 134);
             this.groupBox2.TabIndex = 14;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Calibration controls:";
@@ -253,7 +259,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(147, 24);
+            this.label6.Location = new System.Drawing.Point(225, 26);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(109, 13);
             this.label6.TabIndex = 16;
@@ -261,12 +267,12 @@
             // 
             // numericUpDown4
             // 
-            this.numericUpDown4.Location = new System.Drawing.Point(262, 22);
+            this.numericUpDown4.Location = new System.Drawing.Point(349, 24);
             this.numericUpDown4.Name = "numericUpDown4";
             this.numericUpDown4.Size = new System.Drawing.Size(101, 20);
             this.numericUpDown4.TabIndex = 16;
             this.numericUpDown4.Value = new decimal(new int[] {
-            3,
+            8,
             0,
             0,
             0});
@@ -277,9 +283,9 @@
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.numericUpDown3);
             this.groupBox3.Controls.Add(this.numericUpDown2);
-            this.groupBox3.Location = new System.Drawing.Point(6, 19);
+            this.groupBox3.Location = new System.Drawing.Point(17, 20);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(135, 108);
+            this.groupBox3.Size = new System.Drawing.Size(185, 108);
             this.groupBox3.TabIndex = 15;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Pattern size:";
@@ -306,7 +312,7 @@
             // 
             this.numericUpDown3.Location = new System.Drawing.Point(67, 53);
             this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(62, 20);
+            this.numericUpDown3.Size = new System.Drawing.Size(90, 20);
             this.numericUpDown3.TabIndex = 14;
             this.numericUpDown3.Value = new decimal(new int[] {
             7,
@@ -318,7 +324,7 @@
             // 
             this.numericUpDown2.Location = new System.Drawing.Point(67, 22);
             this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(62, 20);
+            this.numericUpDown2.Size = new System.Drawing.Size(90, 20);
             this.numericUpDown2.TabIndex = 13;
             this.numericUpDown2.Value = new decimal(new int[] {
             10,
@@ -328,11 +334,11 @@
             // 
             // button7
             // 
-            this.button7.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button7.BackColor = System.Drawing.SystemColors.Control;
             this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button7.Location = new System.Drawing.Point(147, 58);
+            this.button7.Location = new System.Drawing.Point(228, 67);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(228, 69);
+            this.button7.Size = new System.Drawing.Size(222, 54);
             this.button7.TabIndex = 13;
             this.button7.Text = "Calibrate selected camera";
             this.button7.UseVisualStyleBackColor = false;
@@ -340,13 +346,13 @@
             // 
             // menuStrip1
             // 
-            this.menuStrip1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.menuStrip1.BackColor = System.Drawing.SystemColors.ControlDark;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.datotekaToolStripMenuItem,
             this.infoToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(779, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1122, 24);
             this.menuStrip1.TabIndex = 15;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -392,13 +398,12 @@
             // pProgramuToolStripMenuItem
             // 
             this.pProgramuToolStripMenuItem.Name = "pProgramuToolStripMenuItem";
-            this.pProgramuToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.pProgramuToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.pProgramuToolStripMenuItem.Text = "About";
             this.pProgramuToolStripMenuItem.Click += new System.EventHandler(this.pProgramuToolStripMenuItem_Click);
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.button6);
             this.groupBox4.Controls.Add(this.listBox2);
             this.groupBox4.Controls.Add(this.button5);
             this.groupBox4.Controls.Add(this.button4);
@@ -412,10 +417,10 @@
             // 
             // button6
             // 
-            this.button6.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button6.Location = new System.Drawing.Point(163, 134);
+            this.button6.BackColor = System.Drawing.SystemColors.Control;
+            this.button6.Location = new System.Drawing.Point(15, 23);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(204, 45);
+            this.button6.Size = new System.Drawing.Size(204, 34);
             this.button6.TabIndex = 13;
             this.button6.Text = "Open database";
             this.button6.UseVisualStyleBackColor = false;
@@ -465,7 +470,7 @@
             // 
             // imageBox3
             // 
-            this.imageBox3.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.imageBox3.BackColor = System.Drawing.SystemColors.Control;
             this.imageBox3.Location = new System.Drawing.Point(-1, -2);
             this.imageBox3.Name = "imageBox3";
             this.imageBox3.Size = new System.Drawing.Size(374, 358);
@@ -484,7 +489,7 @@
             // 
             // imageBox4
             // 
-            this.imageBox4.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.imageBox4.BackColor = System.Drawing.SystemColors.Control;
             this.imageBox4.Location = new System.Drawing.Point(-1, -2);
             this.imageBox4.Name = "imageBox4";
             this.imageBox4.Size = new System.Drawing.Size(374, 358);
@@ -511,11 +516,54 @@
             this.tableAdapterManager.CallibrationTabelTableAdapter = this.callibrationTabelTableAdapter;
             this.tableAdapterManager.UpdateOrder = CamerasCalibrationSystem.CalibrationDatabaseDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
+            // richTextBox1
+            // 
+            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.richTextBox1.Location = new System.Drawing.Point(778, 57);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(332, 360);
+            this.richTextBox1.TabIndex = 19;
+            this.richTextBox1.Text = "";
+            // 
+            // button8
+            // 
+            this.button8.BackColor = System.Drawing.SystemColors.Control;
+            this.button8.Location = new System.Drawing.Point(15, 63);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(204, 39);
+            this.button8.TabIndex = 14;
+            this.button8.Text = "Write parameteres to XML file";
+            this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.button8_Click_1);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(778, 41);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(98, 13);
+            this.label7.TabIndex = 13;
+            this.label7.Text = "Intristic parameters:";
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.button8);
+            this.groupBox6.Controls.Add(this.button6);
+            this.groupBox6.Location = new System.Drawing.Point(465, 19);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(236, 108);
+            this.groupBox6.TabIndex = 17;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Calinration database:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(779, 569);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(1122, 569);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox4);
@@ -553,6 +601,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.imageBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.callibrationTabelBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.calibrationDatabaseDataSet)).EndInit();
+            this.groupBox6.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -603,6 +652,10 @@
         private System.Windows.Forms.BindingSource callibrationTabelBindingSource;
         private CalibrationDatabaseDataSetTableAdapters.CallibrationTabelTableAdapter callibrationTabelTableAdapter;
         private CalibrationDatabaseDataSetTableAdapters.TableAdapterManager tableAdapterManager;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.Label label7;
     }
 }
 
